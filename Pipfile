@@ -1,0 +1,24 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+Django = "~=4.0"
+django-environ = "~=0.8"
+black = "~=21.12b0"
+isort = "~=5.10"
+flake8 = "~=4.0"
+beautifulsoup4 = "*"
+requests = "*"
+
+[requires]
+python_version = "3.8"
+
+[pipenv]
+allow_prereleases = true
+
+[packages.celery]
+extras = [ "redis",]
