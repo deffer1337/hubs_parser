@@ -27,9 +27,6 @@ env = environ.Env(
     REDIS_PORT=(str, ""),
     CELERY_BROKER_URL=(str, ""),
     CELERY_RESULT_BACKEND=(str, ""),
-    CELERY_ACCEPT_CONTENT=(str, ""),
-    CELERY_TASK_SERIALIZER=(str, ""),
-    CELERY_RESULT_SERIALIZER=(str, ""),
     DEBUG=(bool, True),
 )
 
