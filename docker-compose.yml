@@ -1,11 +1,25 @@
 version: '3.7'
+
 services:
   web:
-    build: ./src
-    command: make dev
+    build: ./
+    command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - ./app/:/usr/src/app/
+      - ./src/db.sqlite3:/db.sqlite3
     ports:
-      - 8000:8000
+      - "8000:8000"
     env_file:
-      - ./.env
+      - ./src/.env
+
+  hubs_parser:
+    build: ./
+    command: celery -A config.celery worker -B
+    volumes:
+      - ./src/db.sqlite3:/db.sqlite3
+    env_file:
+      - ./src/.env
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:5-alpine
