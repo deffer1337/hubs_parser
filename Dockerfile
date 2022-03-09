@@ -6,7 +6,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 RUN pip install pipenv
 COPY ./Pipfile ./
 COPY ./Pipfile.lock ./
-RUN pipenv install
+RUN pipenv install --system --deploy --ignore-pipfile
 
-COPY . .
+COPY ./src .
 
