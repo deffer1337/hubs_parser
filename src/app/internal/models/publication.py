@@ -16,12 +16,17 @@ class Publication(models.Model):
     datetime = models.DateTimeField()
     hub = models.ForeignKey(Hub, on_delete=models.SET_NULL, null=True)
 
-    def __str__(self):
+    def get_information(self):
         return (
             f"\n"
+            f"--------------------------------------------\n"
             f"Header - {self.header}\n"
             f"Url - {self.url}\n"
             f"Author name - {self.author_name}\n"
             f"Author url - {self.author_url}\n"
             f"Date and time - {self.datetime}\n"
+            f"--------------------------------------------"
         )
+
+    def __str__(self):
+        return f"{self.header}"
